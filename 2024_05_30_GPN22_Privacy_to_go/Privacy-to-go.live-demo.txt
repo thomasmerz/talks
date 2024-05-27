@@ -1,0 +1,41 @@
+
+# ---
+# REBUILD --> https://console.hetzner.cloud/projects/1196105/servers/47935224/rebuild
+# ---
+
+# ---
+# wireguard
+# ---
+
+apt update && apt upgrade -y && apt install -y docker.io docker-compose
+mkdir wireguard && cd wireguard
+
+docker-compose:
+https://github.com/linuxserver/docker-wireguard?tab=readme-ov-file#docker-compose-recommended-click-here-for-more-info
+
+docker compose up –d && docker exec -it wireguard /app/show-peer 1
+cat config/peer1/peer1.conf
+Check: https://myip.ms/
+Check: docker exec -it wireguard wg
+
+# ---
+# pihole
+# ---
+
+mkdir pihole && cd pihole
+
+docker-compose:
+https://github.com/pi-hole/docker-pi-hole?tab=readme-ov-file#quick-start
+
+systemctl stop systemd-resolved.service && systemctl disable systemd-resolved.service
+vim /etc/resolv.conf # nameserver 127.0.0.1
+docker-compose up -d
+Check: http://49.13.231.185/admin/login.php
+Check mit VPN: http://10.0.0.2/admin/login.php
+Passwort: docker logs pihole 2>&1 | grep "Assigning random password”
+GANZ WICHTIG: http://10.0.0.2/admin/settings.php?tab=dns # allow only local requests
+vim etc-pihole/setupVars.conf # IPV4_ADDRESS=0.0.0.0
+docker restart wireguard pihole
+Check: dig wetrack.it +short ; dig wetrack.it +short @9.9.9.9
+
+
