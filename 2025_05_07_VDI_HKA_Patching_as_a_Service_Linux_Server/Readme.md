@@ -7,4 +7,4 @@ Dieser Vortrag zeigt warum Linux Server und Docker Container regelmäßig und m�
 
 [Cybersicherheit - Patching as a Service. Vortrag im Forum Digitale Transformation](https://www.vdi.de/veranstaltungen/detail/cybersicherheit-patching-as-a-service-vortrag-im-forum-digitale-transformation)  
 [Technologieseminar der Hochschule Karlsruhe](https://www.h-ka.de/terminkalender/event/1119)  
-[Recording](https://www.youtube.com/watch?v=IP7eaffsUZ0)
+[Recording](https://www.youtube.com/live/IP7eaffsUZ0?t=1146)
